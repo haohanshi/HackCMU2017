@@ -14,6 +14,7 @@ class Handler(BaseHTTPRequestHandler):
         return
 
     def do_POST(self):
+        arg_dict = dict()
         # Parse the form data posted
         form = cgi.FieldStorage(
             fp=self.rfile, 
@@ -31,19 +32,12 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write('Form data:\n')
 
         # Echo back information about what was posted in the form
-        print form
         for field in form.keys():
             field_item = form[field]
-            if field_item.filename:
-                # The field contains an uploaded file
-                file_data = field_item.file.read()
-                file_len = len(file_data)
-                del file_data
-                self.wfile.write('\tUploaded %s as "%s" (%d bytes)\n' % \
-                        (field, field_item.filename, file_len))
-            else:
-                # Regular form value
-                self.wfile.write('\t%s=%s\n' % (field, form[field].value))
+            # Regular form value
+            arg_dict[field] = form[field].value
+            self.wfile.write('\t%s=%s\n' % (field, form[field].value))
+        print arg_dict
         return
 
 class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
