@@ -1,5 +1,6 @@
 import setCP.py
 import checkpoints.py
+import instructions.py
 
 global CPList
 
@@ -10,7 +11,8 @@ def main(startPoint, endPoint):
     isLegal(Paths)
     getheuristics(Paths)
     route = findRoute(Paths, startPoint, endPoint)
-    return route
+    result = instructions.generate_instr(route)
+    return result
 
 def findRoute(Paths, startPoint, endPoint)
     route = []

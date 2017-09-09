@@ -62,7 +62,8 @@ class Handler(BaseHTTPRequestHandler):
         startpoint=self.parser(start_room)
         endpoint=self.parser(end_room)
         dict_t = main(startpoint, endpoint)
-        result = json.dumps(arg_dict)
+        
+        result = json.dumps(dict_t)
         self.wfile.write(result)
         return
 
