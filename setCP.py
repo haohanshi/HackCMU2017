@@ -36,7 +36,7 @@ class location:
 path: heuristic, legal status, stations(printer,cafe,toilet,vending)
 '''
 class stations:
-    def __init__(self,have==True,printer,cafe,toilet,vending):
+    def __init__(self,have=True,printer,cafe,toilet,vending):
         self.have=have
         self.printer=printer
         self.cafe=cafe
