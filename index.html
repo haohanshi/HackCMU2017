@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Find Your Way in CMU</title>
+<title>Tartan Walk</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -22,6 +22,7 @@ $( function() {
 	$( "input[type=submit]" ).click( function( event ) {
 		event.preventDefault();
         var name = $('form').serialize()
+        console.log(name);
         if (name == 'Start=&End=') {return false;}
         window.location = './slider.html?' + name ;
      //    $.post(
@@ -48,17 +49,39 @@ $( function() {
 					<!-- login form -->
 					<div class="login-form loginw3-agile"> 
 						<div class="agile-row">
-							<h1>Find Your Way</h1> 
+							<h1>Tartan Walk</h1> 
 							<div class="login-agileits-top"> 	
 								<form action="#" method="post"> 
 									<p>Start (Example: WEH 7500)</p>
 									<input type="text" class="start" name="Start" required=""/>
 									<p>End (Example: DH 2210)</p>
-									<input type="text" class="end" name="End" required=""/>  
+									<input type="text" class="end" name="End" required=""/> 
+									<div>
 									<label class="anim">
-<!-- 										<input type="checkbox" class="checkbox">
-										<span> Remember me ?</span>  -->
-									</label>   
+										<input type="checkbox" class="checkbox">
+										<span>Staircase?</span> 
+									</label>
+									<label class="anim">
+										<input type="checkbox" class="checkbox">
+										<span>Indoor?</span> 
+									</label>
+									<label class="anim">
+										<input type="checkbox" class="checkbox">
+										<span>Handicapped?</span> 
+									</label>
+									</div> 
+									<!-- 										<input type="checkbox" class="checkbox">
+										<span> Prefer indoor?</span>  -->
+	<!-- 									<input type="checkbox" class="checkbox">
+										<span> Restroom?</span> 
+										<input type="checkbox" class="checkbox">
+										<span> Food?</span> 
+										<input type="checkbox" class="checkbox">
+										<span> Vending Machine?</span> 
+										<input type="checkbox" class="checkbox">
+										<span> Printer?</span>
+										<input type="checkbox" class="checkbox">
+										<span> ATM?</span>   -->
 									<input type="submit" value="Go!"> 
 								</form> 	
 							</div> 
@@ -74,6 +97,8 @@ $( function() {
 			</div>   
 		</div>
 	</div>	 
+	<h1>My heart is in the walk<br><span style="font-size:70%;">--Andrew Carnegie</span></h1> 
+
 	<!-- //main --> 
 </body>
 </html>

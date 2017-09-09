@@ -42,6 +42,7 @@ h1 {
     text-align: center;
     color: #fff;
     font-weight: 100;
+    margin-bottom: 2em;
 }
 .w3lsfooteragileits.next {
     position: absolute;
@@ -90,7 +91,7 @@ h1 {
 }
 /*-- checkbox --*/
 .anim {
-    font-size: 0.9em;
+    font-size: 0.7em;
     color: #fff;
     cursor: pointer;
     position: relative;
