@@ -11,6 +11,7 @@ def main(startPoint, endPoint):
     setCP.getHeuristics(Paths)
     route = findRoute(Paths, startPoint, endPoint)
     result = instructions.generate_instr(route)
+    print(result)
     return result
 
 def findRoute(Paths, startPoint, endPoint):

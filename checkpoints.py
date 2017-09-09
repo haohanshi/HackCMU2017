@@ -12,7 +12,7 @@ CPList=[\
     ["DH_AF_WestElevator","Elevator","DH",0,0353],
     ["DH_AF_MidElevator","Elevator","DH",0,0235],
     ["DH_AF_Corridor","Corridor","DH",0,0351],
-    ["DH_1F_Entrance_SmallDoor","Entrance","DH",1,1000]
+    ["DH_1F_Entrance_SmallDoor","Entrance","DH",1,1000],
     ["DH_1F_WestStair","Stair","DH",1,1235],
     ["DH_1F_EastStair","Stair","DH",1,1142],
     ["DH_1F_WestElevator","Elevator","DH",1,1234],

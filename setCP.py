@@ -66,14 +66,14 @@ class location:
         return self.Number
 
 '''
-path: heuristic, legal status, stations(printer,cafe,toilet,vending)
+path: heuristic, legal status, stations(printer,cafe,restroom,vending)
 '''
 class stations:
-    def __init__(self,printer,cafe,toilet,vending,have=True):
+    def __init__(self,printer,cafe,restroom,vending,have=True):
         self.have=have
         self.printer=printer
         self.cafe=cafe
-        self.toilet=toilet
+        self.restroom=restroom
         self.vending=vending
 
     def Have(self):
@@ -85,8 +85,8 @@ class stations:
     def cafe(self):
         return self.cafe
 
-    def Toilet(self):
-        return self.toilet
+    def Restroom(self):
+        return self.restroom
 
     def Vending(self):
         return self.vending
