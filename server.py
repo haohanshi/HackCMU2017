@@ -60,6 +60,7 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
 
         # Echo back information about what was posted in the form
+        print form
         for field in form.keys():
             field_item = form[field]
             # Regular form value
@@ -67,6 +68,9 @@ class Handler(BaseHTTPRequestHandler):
             # self.wfile.write('\t%s=%s\n' % (field, form[field].value))
         start_room = arg_dict["Start"]
         end_room = arg_dict["End"]
+        elevator = arg_dict["elevator"]
+        outdoor = arg_dict["outdoor"]
+        handicap = arg_dict["handicap"]
         #output start/end locations in list format
         startpoint=self.parser(start_room)
         endpoint=self.parser(end_room)

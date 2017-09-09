@@ -49,9 +49,15 @@ var getNumberString = function getNumberString(number) {
 $(document).ready(function() {
 	var start = getUrlParameter('Start');
 	var end = getUrlParameter('End');
+	var elevator = getUrlParameter('elevator');
+	var outdoor = getUrlParameter('outdoor');
+	var handicap = getUrlParameter('handicap');
 	var form = $('<form action="#" method="post">' +
 	'<input type="hidden" name="Start" value="' + start +'" />' +
 	'<input type="hidden" name="End" value="' + end +'" />' +
+	'<input type="hidden" name="elevator" value="' + elevator +'" />' +
+	'<input type="hidden" name="outdoor" value="' + outdoor +'" />' +
+	'<input type="hidden" name="handicap" value="' + handicap +'" />' +
 	'</form>');
 	$('body').append(form);
     $.post(

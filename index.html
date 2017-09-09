@@ -22,9 +22,11 @@ $( function() {
 	$( "input[type=submit]" ).click( function( event ) {
 		event.preventDefault();
         var name = $('form').serialize()
-        console.log(name);
+        var elevator = $("#ele").is(':checked');
+        var outdoor = $("#out").is(':checked');
+        var handicap = $("#hand").is(':checked');
         if (name == 'Start=&End=') {return false;}
-        window.location = './slider.html?' + name ;
+        window.location = './slider.html?' + name + '&elevator=' + elevator + '&outdoor=' + outdoor + '&handicap=' + handicap ;
      //    $.post(
      //    	"http://localhost:8080",
      //    	$('form').serialize(),
@@ -59,15 +61,15 @@ $( function() {
 									<div>
 									<p>Preferences (optional)</p>
 									<label class="anim">
-										<input type="checkbox" class="checkbox">
+										<input type="checkbox" class="checkbox" id="ele">
 										<span>Elevator (less exercise)?</span> 
 									</label>
 									<label class="anim">
-										<input type="checkbox" class="checkbox">
+										<input type="checkbox" class="checkbox" id="out">
 										<span>Outdoor (fresh air)?</span> 
 									</label>
 									<label class="anim">
-										<input type="checkbox" class="checkbox">
+										<input type="checkbox" class="checkbox" id="hand">
 										<span>Handicapped?</span> 
 									</label>
 									</div> 
