@@ -137,7 +137,7 @@ def newCP(locList, i):
 def listOfPoints(num_cp,locList):
     cpList = []
     for i in range(num_cp):
-        cpList.append(locList, i)
+        cpList.append(newCP(locList, i))
     return cpList
 
 def listOfPaths(CPList):
