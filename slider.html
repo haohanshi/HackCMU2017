@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+
+<title>View Your Route</title>
+
+<link href="css/styles.css" rel="stylesheet">
+<!--[if lt IE 9]><link href="css/ie8.css" rel="stylesheet"><![endif]-->
+<!--[if lt IE 8]><link href="css/ie7.css" rel="stylesheet"><![endif]-->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+$(document).ready(function() {
+	var start = getUrlParameter('Start');
+	var end = getUrlParameter('End');
+	var data = { Start : start, End : end};
+	var form = $('<form action="#" method="post">' +
+	'<input type="hidden" name="Start" value="' + start +'" />' +
+	'<input type="hidden" name="End" value="' + end +'" />' +
+	'</form>');
+	$('body').append(form);
+    $.post(
+	"http://localhost:8080",
+	$('form').serialize(),
+    function(data, status){
+    	var json = JSON.parse(data);
+    	alert(json.Start);
+	});
+   	// alert(start + end);
+});
+</script>
+</head>
+
+<body>
+<!-- <div id='loader'><img src="img/Rolling.gif"/></div> -->
+<div class="stage">
+
+	<h1>Your Route</h1>
+
+	<div id="SLDR-ONE" class="sldr">
+		<ul class="wrp animate">
+			<li class="elmnt-one"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8486.JPG"></div></div></li>
+			<li class="elmnt-two"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8488.JPG"></div></div></li>
+			<li class="elmnt-three"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8490.JPG"></div></div></li>
+			<li class="elmnt-four"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8492.JPG"></div></div></li>
+			<li class="elmnt-five"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8486.JPG"></div></div></li>
+			<li class="elmnt-six"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8488.JPG"></div></div></li>
+			<li class="elmnt-seven"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8490.JPG"></div></div></li>
+			<li class="elmnt-eight"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8492.JPG"></div></div></li>
+		</ul>
+	</div>
+
+	<div class="clear"></div>
+
+	<div class="captions">
+	 <div class="focalPoint"><p>Step 1: xxxxx</p></div>
+	 <div><p>Step 2: xxxxx</p></div>
+	 <div><p>Step 3: xxxxx</p></div>
+	 <div><p>Step 4: xxxxx</p></div>
+	</div>
+
+	<ul class="selectors">
+		<li class="focalPoint"><a href="">.</a></li><li><a href="">.</a></li><li><a href="">.</a></li><li><a href="">.</a></li>
+	</ul>
+
+	<button class="sldr-prv sldr-nav prev">Prev</button>
+	<button class="sldr-nxt sldr-nav next">Next</button>
+
+	<div class="clear"></div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+</div>
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery.sldr.js"></script>
+<script>
+
+$( window ).load( function() {
+
+	$( '.sldr' ).each( function() {
+		var th = $( this );
+		th.sldr({
+			focalClass    : 'focalPoint',
+			offset        : th.width() / 2,
+			sldrWidth     : 'responsive',
+			nextSlide     : th.nextAll( '.sldr-nav.next:first' ),
+			previousSlide : th.nextAll( '.sldr-nav.prev:first' ),
+			selectors     : th.nextAll( '.selectors:first' ).find( 'li' ),
+			toggle        : th.nextAll( '.captions:first' ).find( 'div' ),
+			sldrAuto      : true,
+			sldrTime      : 5000,
+			hasChange     : true
+		});
+	});
+
+});
+
+</script>
+
+</body>

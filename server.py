@@ -55,7 +55,6 @@ class Handler(BaseHTTPRequestHandler):
             # Regular form value
             arg_dict[field] = form[field].value
             # self.wfile.write('\t%s=%s\n' % (field, form[field].value))
-        print arg_dict
         start_room = arg_dict["Start"]
         end_room = arg_dict["End"]
         #output start/end locations in list format

@@ -20,13 +20,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 $( function() {
 	$( ".widget input[type=submit]" ).button();
 	$( "input[type=submit]" ).click( function( event ) {
-        $.post(
-        	"http://localhost:8080",
-        	$('form').serialize(),
-	        function(data, status){
-	        	var json = JSON.parse(data);
-	        	alert(json.Start);
-	    });
+		event.preventDefault();
+        var name = $('form').serialize()
+        window.location = './slider.html?' + name ;
+     //    $.post(
+     //    	"http://localhost:8080",
+     //    	$('form').serialize(),
+	    //     function(data, status){
+	    //     	var json = JSON.parse(data);
+	    //     	alert(json.Start);
+	    // });
 	    return false;
 
 	} );
