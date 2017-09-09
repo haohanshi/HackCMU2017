@@ -2,8 +2,6 @@ import setCP
 from checkpoints import CPList
 import instructions
 
-import hardcode
-
 
 
 
