@@ -4,6 +4,7 @@ input: a list of small paths
 *path object attributes: cp1,cp2,type
 output: a list of strings(instructions)
 '''
+import json
 
 def path_to_instr(path):
     #input object, output string
@@ -24,9 +25,10 @@ def path_to_instr(path):
     return instr
 
 def generate_instr(pathlist):
-    all_instr=[]
+    all_instr={}
     for path in pathlist:
         instr=path_to_instr(path)
-        all_instr.append(instr)
+        all_instr[path.Name]=instr
+
     return all_instr
         
