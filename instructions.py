@@ -21,7 +21,7 @@ def path_to_instr(path):
     elif path.cat=='Entrance':
         action='Go through the entrance'
     willsee='Then you will see '+ path.cp2.name
-    instr = action + '\n' + willsee
+    instr = action + '<br>' + willsee
     return instr
 
 def generate_instr(pathlist):
@@ -29,9 +29,9 @@ def generate_instr(pathlist):
     for path in pathlist:
         instr=path_to_instr(path)
         if path==pathlist[0]:
-            all_instr['description'].append("Start from here \n"+instr)
+            all_instr['description'].append("Start from here <br>"+instr)
         elif path==pathlist[len(pathlist)-1]:
-            all_instr['description'].append(instr+"\nYou have arrived at your destination.")
+            all_instr['description'].append(instr+"<br> You have arrived at your destination.")
         else:
             all_instr['description'].append(instr)
             
