@@ -22,6 +22,7 @@ $( function() {
 	$( "input[type=submit]" ).click( function( event ) {
 		event.preventDefault();
         var name = $('form').serialize()
+        if (name == 'Start=&End=') {return false;}
         window.location = './slider.html?' + name ;
      //    $.post(
      //    	"http://localhost:8080",
