@@ -23,10 +23,33 @@ var getUrlParameter = function getUrlParameter(sParam) {
         }
     }
 };
+var getNumberString = function getNumberString(number) {
+	if (number == 1) {
+		return "two";
+	} else if (number == 2) {
+		return "three";
+	} else if (number == 3) {
+		return "four";
+	} else if (number == 4) {
+		return "five";
+	} else if (number == 5) {
+		return "six";
+	} else if (number == 6) {
+		return "seven";
+	} else if (number == 7) {
+		return "eight";
+	} else if (number == 8) {
+		return "nine";
+	} else if (number == 9) {
+		return "ten";
+	} else if (number == 10) {
+		return "eleven";
+	}
+}
 $(document).ready(function() {
+	console.log("345");
 	var start = getUrlParameter('Start');
 	var end = getUrlParameter('End');
-	var data = { Start : start, End : end};
 	var form = $('<form action="#" method="post">' +
 	'<input type="hidden" name="Start" value="' + start +'" />' +
 	'<input type="hidden" name="End" value="' + end +'" />' +
@@ -37,7 +60,50 @@ $(document).ready(function() {
 	$('form').serialize(),
     function(data, status){
     	var json = JSON.parse(data);
-    	alert(json.Start);
+    	console.log(json.description);
+    	
+  //   	for(i = 0; i < json.description.length; i++) { 
+  //   		console.log(i);
+  //   		if (i == 0) {
+  //   			$("div[class=captions").append('<div class="focalPoint"><p>' + json.description[i] + '</p></div>');
+  //   			$("ul[class=selectors").append('<li class="focalPoint"><a href="">&#x2219</a></li>');
+  //   			$("ul[class='wrp animate'").append('<li class="elmnt-one"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8486.JPG"></div></div></li>');
+  //   		} else {
+  //   			$("div[class=captions").append('<div class><p>' + json.description[i] + '</p></div>');
+  //   			$("ul[class=selectors").append('<li><a href="">&#x2219</a></li>');
+  //   			$("ul[class='wrp animate'").append('<li class="elmnt"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8488.JPG"></div></div></li>');
+  //   		}
+		// }
+		jQuery.each(json.description, function(index, item) {
+			console.log(index);
+		    if (index == 0) {
+    			$("div[class=captions").append('<div class="focalPoint"><p>' + item + '</p></div>');
+    			$("ul[class=selectors").append('<li class="focalPoint"><a href="">&#x2219</a></li>');
+    			$("ul[class='wrp animate'").append('<li class="elmnt-one"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8486.JPG"></div></div></li>');
+    		} else {
+    			var number = getNumberString(index);
+    			$("div[class=captions").append('<div class><p>' + item + '</p></div>');
+    			$("ul[class=selectors").append('<li><a href="">&#x2219</a></li>');
+    			$("ul[class='wrp animate'").append('<li class="elmnt-' + number + '"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8488.JPG"></div></div></li>');
+    			
+    		}
+		});
+		console.log("finish");
+		$( '.sldr' ).each( function() {
+			var th = $( this );
+			th.sldr({
+				focalClass    : 'focalPoint',
+				offset        : th.width() / 2,
+				sldrWidth     : 'responsive',
+				nextSlide     : th.nextAll( '.sldr-nav.next:first' ),
+				previousSlide : th.nextAll( '.sldr-nav.prev:first' ),
+				selectors     : th.nextAll( '.selectors:first' ).find( 'li' ),
+				toggle        : th.nextAll( '.captions:first' ).find( 'div' ),
+				sldrAuto      : true,
+				sldrTime      : 5000,
+				hasChange     : true
+			});
+		});
 	});
    	// alert(start + end);
 });
@@ -52,28 +118,24 @@ $(document).ready(function() {
 
 	<div id="SLDR-ONE" class="sldr">
 		<ul class="wrp animate">
-			<li class="elmnt-one"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8486.JPG"></div></div></li>
-			<li class="elmnt-two"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8488.JPG"></div></div></li>
-			<li class="elmnt-three"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8490.JPG"></div></div></li>
-			<li class="elmnt-four"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8492.JPG"></div></div></li>
-			<li class="elmnt-five"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8486.JPG"></div></div></li>
-			<li class="elmnt-six"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8488.JPG"></div></div></li>
-			<li class="elmnt-seven"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8490.JPG"></div></div></li>
-			<li class="elmnt-eight"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8492.JPG"></div></div></li>
+<!-- 			<li class="elmnt-one"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8486.JPG"></div></div></li>
+			<li class="elmnt"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8488.JPG"></div></div></li> -->
+<!-- 			<li class="elmnt-three"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8490.JPG"></div></div></li>
+			<li class="elmnt-four"><div class="skew"><div class="wrap"><img src="cpImages/IMG_8492.JPG"></div></div></li> -->
 		</ul>
 	</div>
 
 	<div class="clear"></div>
 
 	<div class="captions">
-	 <div class="focalPoint"><p>Step 1: xxxxx</p></div>
+<!-- 	 <div class="focalPoint"><p>Step 1: xxxxx</p></div>
 	 <div><p>Step 2: xxxxx</p></div>
 	 <div><p>Step 3: xxxxx</p></div>
-	 <div><p>Step 4: xxxxx</p></div>
+	 <div><p>Step 4: xxxxx</p></div> -->
 	</div>
 
 	<ul class="selectors">
-		<li class="focalPoint"><a href="">.</a></li><li><a href="">.</a></li><li><a href="">.</a></li><li><a href="">.</a></li>
+		<!-- <li class="focalPoint"><a href="">.</a></li><li><a href="">.</a></li><li><a href="">.</a></li><li><a href="">.</a></li> -->
 	</ul>
 
 	<button class="sldr-prv sldr-nav prev">Prev</button>
@@ -94,22 +156,8 @@ $(document).ready(function() {
 <script>
 
 $( window ).load( function() {
+	console.log("123");
 
-	$( '.sldr' ).each( function() {
-		var th = $( this );
-		th.sldr({
-			focalClass    : 'focalPoint',
-			offset        : th.width() / 2,
-			sldrWidth     : 'responsive',
-			nextSlide     : th.nextAll( '.sldr-nav.next:first' ),
-			previousSlide : th.nextAll( '.sldr-nav.prev:first' ),
-			selectors     : th.nextAll( '.selectors:first' ).find( 'li' ),
-			toggle        : th.nextAll( '.captions:first' ).find( 'div' ),
-			sldrAuto      : true,
-			sldrTime      : 5000,
-			hasChange     : true
-		});
-	});
 
 });
 
