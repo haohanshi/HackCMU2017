@@ -147,8 +147,8 @@ input.checkbox:checked:after {
 .login-form input[type="submit"] {
     font-size: 1em;
     color: #fff;
-    background: #E91E63;
-    border: 1px solid #E91E63;
+    background: #990000;
+    border: 1px solid #ffffff;
     outline: none;
     cursor: pointer;
     padding: .6em 1em;
