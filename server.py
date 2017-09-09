@@ -78,7 +78,7 @@ class Handler(BaseHTTPRequestHandler):
         startpoint=self.parser(start_room)
         endpoint=self.parser(end_room)
 
-        dict_t = main(startpoint, endpoint)
+        dict_t = main(startpoint, endpoint, elevator, outdoor)
         # dict_t = {'description':[
         #     'Walk down the Corridor.You will see DH_2F_WestStair.',
         #     'Climb up the stairs. You will see DH2210.','3','4','5'],'points':['DH_2350_Corridor','DH_2F_WestStair', '3']}
@@ -90,6 +90,6 @@ class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
     """Handle requests in a separate thread."""
 
 if __name__ == '__main__':
-    server = ThreadedHTTPServer(('128.237.185.123', 8080), Handler)
+    server = ThreadedHTTPServer(('localhost', 8080), Handler)
     print 'Starting server, use <Ctrl-C> to stop'
     server.serve_forever()

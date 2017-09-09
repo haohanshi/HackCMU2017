@@ -1,43 +1,6 @@
 from checkpoints import CPList
 # import globalVal
 
-class GlobalVal(object):
-    stations = {"Cafe":0, "Restroom":0, "Vending":0, "Printer":0}
-    preferences = {"Indoor":0, "Handicapped":0, "Stair":0}
-
-    def __init__(self, en_Pref = 0, en_Station = 0):
-        self.en_Pref = en_Pref
-        self.en_Station = en_Station
-
-    def En_Pref(self):
-        return self.en_Pref
-
-    def En_Station(self):
-        return self.en_Station
-
-
-class Preferences(object):
-    def __init__(self, en_Pref = 0, indoor = 1, handicapped = 0, stair = 1):
-        if en_Pref:
-            self.indoor = indoor
-            self.handicapped = handicapped
-            self.stair = stair
-        else:
-            self.indoor = 1
-            self.handicapped = 0
-            self.stair = 1
-
-    def Indoor(self):
-        return self.indoor
-
-    def Handicapped(self):
-        return self.handicapped
-
-    def Stair(self):
-        return self.stair
-
-
-Preference = Preferences()
 
 '''
 Location Naming Standardization: Type_Building_Level_Number
@@ -188,36 +151,17 @@ def setupPath(loc1,loc2,Paths):
 
 def isLegal(Paths):
     for key in Paths:
-        path = Paths[key]
-        if path.cp1.Building() == "WEH" and path.cp2.Building() == "DH" and path.cp1.Level() == 5 and path.cp2.Level() == 0:
-            res = True
-        elif path.cp1.Building() != path.cp2.Building():
+        path = Paths[key]if path.cp1.building != path.cp2.building:
             res = False
-        elif path.cp1.Level() == path.cp2.Level():
+        elif path.cp1.level == path.cp2.level:
             res = True
-        elif path.cp1.Type() == "Elevator" and path.cp2.Type() == "Elevator" and abs(path.cp1.level - path.cp2.level) == 1:
+        elif path.cp1.cat == "Elevator" and path.cp2.cat == "Elevator" and abs(path.cp1.level - path.cp2.level) == 1:
             res = True
-        elif path.cp1.Type() == "Stair" and path.cp2.Type() == "Stair" and abs(path.cp1.level - path.cp2.level) == 1:
+        elif path.cp1.cat == "Stair" and path.cp2.cat == "Stair" and abs(path.cp1.level - path.cp2.level) == 1:
             res = True
         else:
             res = False
         path.legal = res
-
-def getHeuristics(Paths):
-    for key in Paths:
-        path = Paths[key]
-        if path.legal:
-            if path.Type == "Corridor":
-                path.heuristic = 1 - Preference.indoor * 0.5
-            elif path.Type == "Out":
-                path.heuristic = Preference.indoor * 0.5 + 0.5
-            elif path.Type == "Stair":
-                path.heuristic = 1 - Preference.stair * 0.5
-            elif path.Type == "Elevator":
-                path.heuristic = Preference.stair * 0.5 + 0.5
-        else:
-            path.heuristic = 1000
-
 
 
 

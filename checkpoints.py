@@ -6,7 +6,7 @@
 #Uncommented DH_2F_MidStair line23
 #Uncommented DH_2F_MidElevator line26
 CPList=[\
-    ["level A entrance to DH","Entrance","DH",0,0000],
+    ["level A entrance to DH","Entrance","DH",0,0100],
     ["west staircase on DH level A","Stair","DH",0,0355],
     ["middle staircase on DH level A","Stair","DH",0,0236],
     ["west elevator on DH level A","Elevator","DH",0,0353],
@@ -38,6 +38,8 @@ CPList=[\
     ["WEH5400 wing","Corridor","WEH",5,5400],
     ["WEH5312","Room","WEH",5,5312],
 
-    ["road along WEH and DH","Road","Outdoor",1,1000]
+    ["road along WEH and DH","Road","Outdoor",1,1000],
+
+    ["Randy Pausch Bridge", "Bridge", "GHC", 5, 5000]
 
 ]
