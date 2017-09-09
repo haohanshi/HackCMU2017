@@ -1,0 +1,75 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Find Your Way in CMU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files --> 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$( function() {
+	$( ".widget input[type=submit]" ).button();
+	$( "input[type=submit]" ).click( function( event ) {
+        $.post(
+        	"http://localhost:8080",
+        	$('form').serialize(),
+	        function(data, status){
+	        	var json = JSON.parse(data);
+	        	alert(json.Start);
+	    });
+	    return false;
+
+	} );
+} );
+</script>
+<!-- //web font -->
+</head>
+<body>
+	<!-- main --> 
+	<div class="main-agileinfo slider ">
+		<div class="items-group">
+			<div class="item agileits-w3layouts">
+				<div class="block text main-agileits"> 
+					<span class="circleLight"></span> 
+					<!-- login form -->
+					<div class="login-form loginw3-agile"> 
+						<div class="agile-row">
+							<h1>Find Your Way</h1> 
+							<div class="login-agileits-top"> 	
+								<form action="#" method="post"> 
+									<p>Start (Example: WEH 7500)</p>
+									<input type="text" class="start" name="Start" required=""/>
+									<p>End (Example: DH 2210)</p>
+									<input type="text" class="end" name="End" required=""/>  
+									<label class="anim">
+<!-- 										<input type="checkbox" class="checkbox">
+										<span> Remember me ?</span>  -->
+									</label>   
+									<input type="submit" value="Go!"> 
+								</form> 	
+							</div> 
+<!-- 							<div class="login-agileits-bottom wthree"> 
+								<h6><a href="#">Forgot password?</a></h6>
+							</div>  -->
+						</div>  
+					</div>   
+				</div>
+<!-- 				<div class="w3lsfooteragileits">
+					<p> &copy; 2017 Shadow Login Form. All Rights Reserved | Design by <a href="http://w3layouts.com" target="=_blank">W3layouts</a></p>
+				</div>  -->
+			</div>   
+		</div>
+	</div>	 
+	<!-- //main --> 
+</body>
+</html>

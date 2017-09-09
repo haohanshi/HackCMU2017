@@ -2,15 +2,24 @@ from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 from SocketServer import ThreadingMixIn
 import threading
 import cgi
+import json
 
 class Handler(BaseHTTPRequestHandler):
     
     def do_GET(self):
-        self.send_response(200)
-        self.end_headers()
-        message =  threading.currentThread().getName()
-        self.wfile.write(message)
-        self.wfile.write('\n')
+        rootdir = '/Users/Alex/Desktop/HackCMU217' #file location
+        try:
+            self.send_response(200)
+            self.send_header('Content-type',    'text/html')
+            self.end_headers()
+            if self.path.endswith('.html'):
+                print(rootdir + self.path)
+                f = open(rootdir + self.path)
+                #send file content to client
+                self.wfile.write(f.read())
+                f.close()
+        except IOError:
+            self.send_error(404, 'file not found')
         return
 
     def do_POST(self):
@@ -26,18 +35,16 @@ class Handler(BaseHTTPRequestHandler):
         # Begin the response
         self.send_response(200)
         self.end_headers()
-        self.wfile.write('Client: %s\n' % str(self.client_address))
-        self.wfile.write('User-agent: %s\n' % str(self.headers['user-agent']))
-        self.wfile.write('Path: %s\n' % self.path)
-        self.wfile.write('Form data:\n')
 
         # Echo back information about what was posted in the form
         for field in form.keys():
             field_item = form[field]
             # Regular form value
             arg_dict[field] = form[field].value
-            self.wfile.write('\t%s=%s\n' % (field, form[field].value))
+            # self.wfile.write('\t%s=%s\n' % (field, form[field].value))
         print arg_dict
+        result = json.dumps(arg_dict)
+        self.wfile.write(result)
         return
 
 class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
