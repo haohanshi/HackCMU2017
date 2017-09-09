@@ -28,14 +28,14 @@ class location:
         return self.Number
 
 '''
-path: heuristic, legal status, stations(printer,cafe,restroom,vending)
+path: heuristic, legal status, stations(printer,cafe,toilet,vending)
 '''
 class stations:
-    def __init__(self,have==True,printer,cafe,restroom,vending):
+    def __init__(self,have==True,printer,cafe,toilet,vending):
         self.have=have
         self.printer=printer
         self.cafe=cafe
-        self.restroom=restroom
+        self.toilet=toilet
         self.vending=vending
 
     def Have(self):
@@ -44,11 +44,11 @@ class stations:
     def Printer(self):
         return self.printer
 
-    def Cafe(self):
+    def cafe(self):
         return self.cafe
 
-    def Restroom(self):
-        return self.restroom
+    def Toilet(self):
+        return self.toilet
 
     def Vending(self):
         return self.vending
@@ -176,14 +176,6 @@ def getHeuristics(Paths):
                 path.heuristic = Preferences.stair * 0.5 + 0.5
         else:
             path.heuristic = 1000
-    
-
-def main():
-    pass
-
-
-
-
 
 
 

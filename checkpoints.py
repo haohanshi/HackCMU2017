@@ -1,4 +1,4 @@
-checkpoints=[\
+CPList=[\
     ["WEH_DH_Entrance_DHside","Entrance","DH",0,0000]\
     ["DH_AF_WestStair","Stair","DH",0,0355]\
     ["DH_AF_MidStair","Stair","DH",0,0236]\
