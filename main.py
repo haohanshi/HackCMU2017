@@ -1,15 +1,14 @@
-import setCP.py
-import checkpoints.py
-import instructions.py
+import setCP
+from checkpoints import CPList
+import instructions
 
-global CPList
 
 
 
 def main(startPoint, endPoint):
-    Paths = listOfPath(CPList)
-    isLegal(Paths)
-    getheuristics(Paths)
+    Paths = setCP.listOfPaths(CPList)
+    setCP.isLegal(Paths)
+    setCP.getHeuristics(Paths)
     route = findRoute(Paths, startPoint, endPoint)
     result = instructions.generate_instr(route)
     return result
@@ -29,4 +28,5 @@ def findRoute(Paths, startPoint, endPoint):
     route.append(Paths["DH_1F_WestStair_to_DH_2F_WestStair"])
     route.append(Paths["DH_2F_WestStair_to_DH_2350_Corridor"])
     route.append(Paths["DH_2350_Corridor_to_DH2210"])
+    return route
 

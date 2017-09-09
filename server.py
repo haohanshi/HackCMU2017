@@ -3,7 +3,7 @@ from SocketServer import ThreadingMixIn
 import threading
 import cgi
 import json
-# import main
+from main import *
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -61,10 +61,10 @@ class Handler(BaseHTTPRequestHandler):
         startpoint=self.parser(start_room)
         endpoint=self.parser(end_room)
 
-        #dict_t = main(startpoint, endpoint)
-        dict_t = {'description':[
-            'Walk down the Corridor.You will see DH_2F_WestStair.',
-            'Climb up the stairs. You will see DH2210.','3','4','5'],'points':['DH_2350_Corridor','DH_2F_WestStair', '3']}
+        dict_t = main(startpoint, endpoint)
+        # dict_t = {'description':[
+        #     'Walk down the Corridor.You will see DH_2F_WestStair.',
+        #     'Climb up the stairs. You will see DH2210.','3','4','5'],'points':['DH_2350_Corridor','DH_2F_WestStair', '3']}
         result = json.dumps(dict_t)
         self.wfile.write(result)
         return
