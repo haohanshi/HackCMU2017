@@ -89,6 +89,13 @@ h1 {
     margin:1.8em 0 .5em;
     letter-spacing: 1px;
 }
+
+.login-form p[type="try"] {
+    font-size: 0.9em;
+    color: #fff;
+    margin:0.5em 0 1em;
+    letter-spacing: 1px;
+}
 /*-- checkbox --*/
 .anim {
     font-size: 0.7em;

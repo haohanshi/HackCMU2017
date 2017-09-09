@@ -37,6 +37,11 @@ $( function() {
 	    return false;
 
 	} );
+	$( ".widget p[type=try]" ).button();
+	$( "p[type=try]" ).click( function( event ) {
+		$('#hide').show();
+		$('#hidetoggle').text('- Advanced');
+	});
 } );
 </script>
 <!-- //web font -->
@@ -69,8 +74,35 @@ $( function() {
 									</label>
 									<label class="anim">
 										<input type="checkbox" class="checkbox" id="hand">
-										<span>Handicapped?</span> 
+										<span>Handicapped?</span>
 									</label>
+									<p id="hidetoggle" type="try">+ Advanced</p>
+									<div id="hide" style="display: none;">
+									<label class="anim">
+										<input type="checkbox" class="checkbox">
+										<span>Restroom</span> 
+									</label>
+									<label class="anim">
+										<input type="checkbox" class="checkbox">
+										<span>Food</span> 
+									</label>
+									<label class="anim">
+										<input type="checkbox" class="checkbox">
+										<span>Printer</span>
+									</label>
+									<label class="anim">
+										<input type="checkbox" class="checkbox">
+										<span>ATM</span> 
+									</label>
+									<label class="anim">
+										<input type="checkbox" class="checkbox">
+										<span>Vending Machine</span> 
+									</label>
+									<label class="anim">
+										<input type="checkbox" class="checkbox">
+										<span>Water Foutain</span>
+									</label>
+									</div>
 									<!-- 										<input type="checkbox" class="checkbox">
 										<span> Prefer indoor?</span>  -->
 	<!-- 									<input type="checkbox" class="checkbox">
