@@ -40,6 +40,17 @@ CPList=[\
 
     ["road along WEH and DH","Road","Outdoor",1,1000],
 
-    ["Randy Pausch Bridge", "Bridge", "GHC", 5, 5000]
+    ["Randy Pausch Bridge", "Bridge", "GHC", 5, 5000],
+    ["Gates 5th floor entrance", "Entrance", "GHC", 5, 5001],
+    ["Gates 5th floor staircase", "Stair", "GHC", 5, 5002],
+    ["Gates 4th floor staircase", "Stair", "GHC", 4, 4002],
+    ["Gates to NSH bridge", "Bridge", "GHC", 4, 4003],
+    ["NSH 4th floor corridor", "Corridor", "NSH", 4, 4003],
+    ["NSH to WEH bridge", "Bridge", "WEH", 4, 4100],
+    ["WEH to Scott Bridge", "Bridge", "WEH", 4, 4101],
+    ["Scott Hall Cafe", "Cafe", "SCT", 4, 4000],
+    ["Scott to HH Corridor", "Corridor", "SCT", 4, 4001],
+    ["HH Elevator", "Elevator", "HH", 1, 1000],
+    ["HH 1300 Wing", "Corridor", "HH", 1, 1300]
 
 ]

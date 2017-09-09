@@ -151,8 +151,9 @@ def setupPath(loc1,loc2,Paths):
 
 def isLegal(Paths):
     for key in Paths:
-        path = Paths[key]if path.cp1.building != path.cp2.building:
-            res = False
+        path = Paths[key]
+        if path.cp1.building != path.cp2.building:
+            res = True
         elif path.cp1.level == path.cp2.level:
             res = True
         elif path.cp1.cat == "Elevator" and path.cp2.cat == "Elevator" and abs(path.cp1.level - path.cp2.level) == 1:

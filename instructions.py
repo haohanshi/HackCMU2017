@@ -24,7 +24,7 @@ def path_to_instr(path):
     instr = action + '<br>' + willsee
     return instr
 
-def generate_instr(pathlist):
+def generate_instr(pathlist, Paths):
     all_instr={'description':[], 'cpList':[]}
     for path in pathlist:
         instr=path_to_instr(path)
@@ -37,7 +37,7 @@ def generate_instr(pathlist):
         else:
             all_instr['description'].append(instr)
             
-        if (path.cp2.cat == "Stair" or path.cp2.cat == "Elevator"):
+        if ((path.cp2.cat == "Stair" or path.cp2.cat == "Elevator") and (path.cp2.building == "DH")):
             cp_name = path.cp2.cat
         else:
             cp_name = path.cp2.name
