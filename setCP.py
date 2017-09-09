@@ -205,9 +205,9 @@ def getHeuristics(Paths):
         path = Paths[key]
         if path.legal:
             if path.Type == "Corridor":
-                path.heuristic = 2 - Preference.indoor * 0.5
+                path.heuristic = 1 - Preference.indoor * 0.5
             elif path.Type == "Out":
-                path.heuristic = Preference.indoor * 0.5
+                path.heuristic = Preference.indoor * 0.5 + 0.5
             elif path.Type == "Stair":
                 path.heuristic = 1 - Preference.stair * 0.5
             elif path.Type == "Elevator":
