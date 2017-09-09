@@ -6,7 +6,7 @@
 #Uncommented DH_2F_MidStair line23
 #Uncommented DH_2F_MidElevator line26
 CPList=[\
-    ["level A entry to DH","Entrance","DH",0,0000],
+    ["level A entrance to DH","Entrance","DH",0,0000],
     ["west staircase on DH level A","Stair","DH",0,0355],
     ["middle staircase on DH level A","Stair","DH",0,0236],
     ["west elevator on DH level A","Elevator","DH",0,0353],
