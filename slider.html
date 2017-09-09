@@ -55,7 +55,7 @@ $(document).ready(function() {
 	'</form>');
 	$('body').append(form);
     $.post(
-	"http://localhost:8080",
+	"http://128.237.185.123:8080",
 	$('form').serialize(),
     function(data, status){
     	var json = JSON.parse(data);
@@ -97,7 +97,7 @@ $(document).ready(function() {
 				selectors     : th.nextAll( '.selectors:first' ).find( 'li' ),
 				toggle        : th.nextAll( '.captions:first' ).find( 'div' ),
 				sldrAuto      : true,
-				sldrTime      : 5000,
+				sldrTime      : 100000,
 				hasChange     : true
 			});
 		});

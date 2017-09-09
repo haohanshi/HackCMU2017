@@ -54,7 +54,7 @@ h1 {
     font-size: 3em;
     color: #fff;
     text-align: center;
-    margin-bottom: 1.5em;
+    margin-bottom: 0.7em;
     line-height: 0.7em;
 }
 .input-row {
@@ -95,7 +95,7 @@ h1 {
     color: #fff;
     cursor: pointer;
     position: relative;
-    margin: 2.5em 0;
+    margin: 0.5em 0;
     display: inline-block;
     letter-spacing: 1px;
 }

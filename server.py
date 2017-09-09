@@ -83,6 +83,6 @@ class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
     """Handle requests in a separate thread."""
 
 if __name__ == '__main__':
-    server = ThreadedHTTPServer(('localhost', 8080), Handler)
+    server = ThreadedHTTPServer(('128.237.185.123', 8080), Handler)
     print 'Starting server, use <Ctrl-C> to stop'
     server.serve_forever()
