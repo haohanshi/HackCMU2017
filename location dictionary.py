@@ -3,11 +3,14 @@ Location Naming Standardization: Type_Building_Level_Number
 '''
 class location:
     def __init__(self,name,type,building,level,number):
+        self.name=name
         self.type=type
         self.building=building
         self.level=level
         self.number=number
-
+        
+    def Name(self):
+        return self.name
 
     def Type(self):
         return self.type
@@ -20,6 +23,10 @@ class location:
 
     def Number(self):
         return self.Number
+
+
+
+        
 
 '''
 path: heuristic, legal status, stations(printer,eatery,toilet,vending)
