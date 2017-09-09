@@ -3,6 +3,7 @@ from SocketServer import ThreadingMixIn
 import threading
 import cgi
 import json
+from distutils.util import strtobool
 from main import *
 
 
@@ -60,7 +61,6 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
 
         # Echo back information about what was posted in the form
-        print form
         for field in form.keys():
             field_item = form[field]
             # Regular form value
@@ -69,8 +69,11 @@ class Handler(BaseHTTPRequestHandler):
         start_room = arg_dict["Start"]
         end_room = arg_dict["End"]
         elevator = arg_dict["elevator"]
+        elevator = bool(strtobool(elevator))
         outdoor = arg_dict["outdoor"]
+        outdoor = bool(strtobool(outdoor))
         handicap = arg_dict["handicap"]
+        handicap = bool(strtobool(handicap))
         #output start/end locations in list format
         startpoint=self.parser(start_room)
         endpoint=self.parser(end_room)
