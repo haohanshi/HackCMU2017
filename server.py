@@ -4,6 +4,14 @@ import threading
 import cgi
 import json
 
+def parser(room):
+    building,number=room.split(" ")
+    name=building+number
+    type='Room'
+    level=number[0]
+    return [name,type,building,level,number]
+
+
 class Handler(BaseHTTPRequestHandler):
     
     def do_GET(self):
@@ -21,6 +29,16 @@ class Handler(BaseHTTPRequestHandler):
         except IOError:
             self.send_error(404, 'file not found')
         return
+
+    def parser(self,room):
+        building,number=room.split(" ")
+        name=building+number
+        type='Room'
+        level=number[0]
+        if level=='A':
+            level=0
+        return [name,type,building,level,number]
+
 
     def do_POST(self):
         arg_dict = dict()
@@ -43,6 +61,11 @@ class Handler(BaseHTTPRequestHandler):
             arg_dict[field] = form[field].value
             # self.wfile.write('\t%s=%s\n' % (field, form[field].value))
         print arg_dict
+        start_room = arg_dict["Start"]
+        end_room = arg_dict["End"]
+        #output start/end locations in list format
+        startpoint=self.parser(start_room)
+        endpoint=self.parser(end_room)
         result = json.dumps(arg_dict)
         self.wfile.write(result)
         return
