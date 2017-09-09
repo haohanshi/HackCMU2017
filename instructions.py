@@ -11,16 +11,16 @@ def path_to_instr(path):
     #type:corridor,stair,elevator,road,entrance
     action=''
     if path.cat=='Corridor' or path.cat=='Road':
-        action='Walk down the'+path.cp1.name
+        action='Walk down the '+path.cat
     elif path.cat=='Stair':
-        destination='Level'+str(path.cp2.level)
-        action='Climb up the stairs to'+destination
+        destination='Level '+str(path.cp2.level)
+        action='Take the stairs to '+destination
     elif path.cat=='Elevator':
         destination='Level'+str(path.cp2.level)
         action='Take the elevator to'+destination
     elif path.cat=='Entrance':
-        action='Go through the'+path.cp1.name
-    willsee='Then you will see'+ path.cp2.name
+        action='Go through the entrance'
+    willsee='Then you will see '+ path.cp2.name
     instr = action + '\n' + willsee
     return instr
 
@@ -28,7 +28,13 @@ def generate_instr(pathlist):
     all_instr={'description':[], 'cpList':[]}
     for path in pathlist:
         instr=path_to_instr(path)
-        all_instr['description'].append(instr)
+        if path==pathlist[0]:
+            all_instr['description'].append("Start from here \n"+instr)
+        elif path==pathlist[len(pathlist)-1]:
+            all_instr['description'].append(instr+"\nYou have arrived at your destination.")
+        else:
+            all_instr['description'].append(instr)
+            
         if (path.cp2.cat == "Stair" or path.cp2.cat == "Elevator"):
             cp_name = path.cp2.cat
         else:
