@@ -38,6 +38,6 @@ CPList=[\
     ["WEH5400 wing","Corridor","WEH",5,5400],
     ["WEH5312","Room","WEH",5,5312],
 
-    ["road along WEH and DH","Road","Outdoor",1,1000],
+    ["road along WEH and DH","Road","Outdoor",1,1000]
 
 ]

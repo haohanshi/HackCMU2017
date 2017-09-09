@@ -131,10 +131,13 @@ Input: location names
 Output: path objects
 '''
 
+def newCP(locList, i):
+    return location(locList[i][0], locList[i][1], locList[i][2], locList[i][3], locList[i][4])
+
 def listOfPoints(num_cp,locList):
     cpList = []
     for i in range(num_cp):
-        cpList.append(location(locList[i][0], locList[i][1], locList[i][2], locList[i][3], locList[i][4]))
+        cpList.append(locList, i)
     return cpList
 
 def listOfPaths(CPList):

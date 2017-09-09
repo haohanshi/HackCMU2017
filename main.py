@@ -14,35 +14,50 @@ def main(startPoint, endPoint):
     print(result)
     return result
 
+
+def solveRoute(Paths, startPoint, endPoint):
+    visited = []
+    def solve(Paths, cur_point):
+        # base cases
+        if cur_point in visited: return False
+        visited.append(cur_point)
+        if cur_point == endPoint: return True
+        # recursive case
+        for key in Paths:
+            path = Paths[key]
+            if path.cp1.name == cur_point.name and path.legal:
+                if solve(Paths, path.cp2.name): return True
+        visited.pop(visited.index(cur_point))
+        return False
+    return visited if solve(Paths, startPoint) else None
+
 def findRoute(Paths, startPoint, endPoint):
-    route1 = []
-    # for key in Paths:
-    #     path = Paths.key
-    #     if path.cp1.name == startPoint[0] and path.legal:
+
+    route0 = []
+    route0.append(Paths["WEH5312_to_WEH5300 wing"])
+    route0.append(Paths["WEH5300 wing_to_entrance to DH"])
+    route0.append(Paths["entrance to DH_to_level A entrance to DH"])
+    route0.append(Paths["level A entrance to DH_to_west staircase on DH level A"])
+    route0.append(Paths["west staircase on DH level A_to_west staircase on DH level 1"])
+    route0.append(Paths["west staircase on DH level 1_to_west staircase on DH level 2"])
+    route0.append(Paths["west staircase on DH level 2_to_DH2300 wing"])
+    route0.append(Paths["DH2300 wing_to_DH2210"])
+
+    route = []
+    shortCPL = [startPoint, endPoint]
+    startCP = setCP.newCP(shortCPL,0)
+    endCP = setCP.newCP(shortCPL,1)
+    if startPoint[0] == "Randy Pausch Bridge":
+        return route0
+    return solveRoute(Paths, startCP, endCP)
+
 
     #HARDCODE FOR TEST ONLY
-    route1.append(Paths["WEH5312_to_WEH5300 wing"])
-    route1.append(Paths["WEH5300 wing_to_entrance to DH"])
-    route1.append(Paths["entrance to DH_to_level A entrance to DH"])
-    route1.append(Paths["level A entrance to DH_to_west staircase on DH level A"])
-    route1.append(Paths["west staircase on DH level A_to_west staircase on DH level 1"])
-    route1.append(Paths["west staircase on DH level 1_to_west staircase on DH level 2"])
-    route1.append(Paths["west staircase on DH level 2_to_DH2300 wing"])
-    route1.append(Paths["DH2300 wing_to_DH2210"])
-    # for key in Paths:
-    #     path = Paths[key]
-    #     if path.cp1.name == startPoint[0] and path.legal:
-
-
-
-    #HARDCODE FOR TEST ONLY
-    # route.append(Paths["WEH5312_to_WEH_5300_Corridor"])
-    # route.append(Paths["WEH_5300_Corridor_to_WEH_DH_Entrance_WEHside"])
-    # route.append(Paths["WEH_DH_Entrance_WEHside_to_WEH_DH_Entrance_DHside"])
-    # route.append(Paths["WEH_DH_Entrance_DHside_to_DH_AF_WestStair"])
-    # route.append(Paths["DH_AF_WestStair_to_DH_1F_WestStair"])
-    # route.append(Paths["DH_1F_WestStair_to_DH_2F_WestStair"])
-    # route.append(Paths["DH_2F_WestStair_to_DH_2350_Corridor"])
-    # route.append(Paths["DH_2350_Corridor_to_DH2210"])
-    return route1
-
+    # route1.append(Paths["WEH5312_to_WEH5300 wing"])
+    # route1.append(Paths["WEH5300 wing_to_entrance to DH"])
+    # route1.append(Paths["entrance to DH_to_level A entrance to DH"])
+    # route1.append(Paths["level A entrance to DH_to_west staircase on DH level A"])
+    # route1.append(Paths["west staircase on DH level A_to_west staircase on DH level 1"])
+    # route1.append(Paths["west staircase on DH level 1_to_west staircase on DH level 2"])
+    # route1.append(Paths["west staircase on DH level 2_to_DH2300 wing"])
+    # route1.append(Paths["DH2300 wing_to_DH2210"])
