@@ -56,6 +56,7 @@ class Handler(BaseHTTPRequestHandler):
 
         # Begin the response
         self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
 
         # Echo back information about what was posted in the form
