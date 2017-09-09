@@ -32,6 +32,8 @@ def generate_instr(pathlist):
             all_instr['description'].append("Start from here <br>"+instr)
         elif path==pathlist[len(pathlist)-1]:
             all_instr['description'].append(instr+"<br> You have arrived at your destination.")
+        elif path == Paths["WEH to Scott Bridge_to_Scott Hall Cafe"]:
+            all_instr['description'].append(instr+"<br> Hungry? Grab some snacks here!")
         else:
             all_instr['description'].append(instr)
             
