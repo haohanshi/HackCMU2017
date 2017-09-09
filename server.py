@@ -4,13 +4,6 @@ import threading
 import cgi
 import json
 
-def parser(room):
-    building,number=room.split(" ")
-    name=building+number
-    type='Room'
-    level=number[0]
-    return [name,type,building,level,number]
-
 
 class Handler(BaseHTTPRequestHandler):
     
