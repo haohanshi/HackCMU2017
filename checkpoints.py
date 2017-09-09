@@ -37,6 +37,9 @@ CPList=[\
     ["WEH5300 wing","Corridor","WEH",5,5300],
     ["WEH5400 wing","Corridor","WEH",5,5400],
     ["WEH5312","Room","WEH",5,5312],
+    ["printer on Wean 5th floor", "Printer", "WEH", 5, 5301],
+    ["La Prima Cafe", "Cafe", "WEH", 5, 5002],
+    ["Wean main entrance", "Entrance", "WEH", 5, 5000],
 
     ["road along WEH and DH","Road","Outdoor",1,1000],
 

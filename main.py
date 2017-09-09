@@ -18,15 +18,15 @@ class GlobalVal(object):
 
 
 class Preferences(object):
-    def __init__(self, en_Pref = 0, outdoor = 1, handicapped = 0, elevator = 1):
+    def __init__(self, en_Pref = 0, outdoor = 0, handicapped = 0, elevator = 0):
         if en_Pref:
             self.outdoor = outdoor
             self.handicapped = handicapped
             self.elevator = elevator
         else:
-            self.outdoor = 1
+            self.outdoor = 0
             self.handicapped = 0
-            self.elevator = 1
+            self.elevator = 0
 
     def Outdoor(self):
         return self.outdoor
@@ -71,7 +71,7 @@ def main(startPoint, endPoint, elevator, outdoor):
     #         print(path.cp2.name)
 
     ##
-    pref = Preferences(1, elevator, 0, outdoor)
+    pref = Preferences(1, outdoor, 0, elevator)
     getHeuristics(Paths, pref)
     route = findRoute(Paths, startPoint, endPoint, pref)
     result = instructions.generate_instr(route, Paths)
@@ -82,7 +82,7 @@ def main(startPoint, endPoint, elevator, outdoor):
 def solveRoute(Paths, startPoint, endPoint):
     visited = []
     def solve(Paths, cur_point):
-        print(cur_point.number)
+        # print(cur_point.number)
         # base cases
         if cur_point in visited:
             return False
@@ -113,12 +113,25 @@ def findRoute(Paths, startPoint, endPoint, Pref):
 
     route1 = []
     route1.append(Paths["WEH5312_to_WEH5300 wing"])
-    route1.append(Paths["WEH5300 wing_to_entrance to DH"])
-    route1.append(Paths["entrance to DH_to_level A entrance to DH"])
-    route1.append(Paths["level A entrance to DH_to_west staircase on DH level A"])
-    route1.append(Paths["west staircase on DH level A_to_west staircase on DH level 2"])
+    route1.append(Paths["WEH5300 wing_to_printer on Wean 5th floor"])
+    route1.append(Paths["printer on Wean 5th floor_to_Wean main entrance"])
+    route1.append(Paths["Wean main entrance_to_road along WEH and DH"])
+    route1.append(Paths["road along WEH and DH_to_level 1 side entry to DH"])
+    route1.append(Paths["level 1 side entry to DH_to_west staircase on DH level 1"])
+    route1.append(Paths["west staircase on DH level 1_to_west staircase on DH level 2"])
     route1.append(Paths["west staircase on DH level 2_to_DH2300 wing"])
     route1.append(Paths["DH2300 wing_to_DH2210"])
+
+
+    route3 = []
+    route3.append(Paths["WEH5312_to_WEH5300 wing"])
+    route3.append(Paths["WEH5300 wing_to_entrance to DH"])
+    route3.append(Paths["entrance to DH_to_level A entrance to DH"])
+    route3.append(Paths["level A entrance to DH_to_west staircase on DH level A"])
+    route3.append(Paths["west staircase on DH level A_to_west staircase on DH level 2"])
+    route3.append(Paths["west staircase on DH level 2_to_DH2300 wing"])
+    route3.append(Paths["DH2300 wing_to_DH2210"])
+
 
     route2 = []
     #HARDCODE FOR TEST ONLY
@@ -139,12 +152,10 @@ def findRoute(Paths, startPoint, endPoint, Pref):
     startCP = setCP.newCP(shortCPL,0)
     endCP = setCP.newCP(shortCPL,1)
     if startPoint[0] == "WEH5312":
-        return route0 if Pref.elevator else route1
+        c_route = route0 if Pref.elevator else route3
+        return route1 if Pref.outdoor else c_route
     elif startPoint[0] == "Randy Pausch Bridge":
         return route2
-        
-    # elif startPoint[0][0:3] == "WEH":
-    #     return route1
     return solveRoute(Paths, startCP, endCP)
 
 
