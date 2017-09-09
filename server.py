@@ -3,7 +3,7 @@ from SocketServer import ThreadingMixIn
 import threading
 import cgi
 import json
-import main.py
+# import main
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -25,7 +25,7 @@ class Handler(BaseHTTPRequestHandler):
         return
 
     def parser(self,room):
-        building,number=room.split(" ")
+        building,number=room.split("+")
         name=building+number
         type='Room'
         level=int(number[0])
@@ -60,10 +60,11 @@ class Handler(BaseHTTPRequestHandler):
         #output start/end locations in list format
         startpoint=self.parser(start_room)
         endpoint=self.parser(end_room)
+
         dict_t = main(startpoint, endpoint)
         
         result = json.dumps(dict_t)
-        self.wfile.write(result)
+        self.wfile.write(dict_t)
         return
 
 class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):

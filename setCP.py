@@ -1,5 +1,5 @@
-import checkpoints.py
-import globalVal.py
+import checkpoints
+import globalVal
 
 global CPList
 GlobalVal()
@@ -36,7 +36,7 @@ class location:
 path: heuristic, legal status, stations(printer,cafe,toilet,vending)
 '''
 class stations:
-    def __init__(self,have=True,printer,cafe,toilet,vending):
+    def __init__(self,printer,cafe,toilet,vending,have=True):
         self.have=have
         self.printer=printer
         self.cafe=cafe
@@ -120,9 +120,9 @@ def setupPath(loc1,loc2,Paths):
     path_name=loc1.Name+"_to_"+loc2.Name
     if (loc1.Type == "Stair" and loc2.Type == "Stair"):
         pathType = "Stair"
-    else if (loc1.Type == "Elevator" and loc2.Type == "Elevator"):
+    elif (loc1.Type == "Elevator" and loc2.Type == "Elevator"):
         pathType = "Elevator"
-    else if (loc1.Type == "Entrance" and loc2.Type == "Entrance"):
+    elif (loc1.Type == "Entrance" and loc2.Type == "Entrance"):
         pathType = "Road"
     else:
         pathType = "Corridor"
@@ -155,13 +155,13 @@ def isLegal(Paths):
         path = Paths[key]
         if path.cp1.Building == "WEH" and path.cp2.Building == "DH" and path.cp1.Level == 5 and path.cp2.Level == 0:
             res = True
-        else if path.cp1.Building != path.cp2.Building:
+        elif path.cp1.Building != path.cp2.Building:
             res = False
-        else if path.cp1.Level == path.cp2.Level:
+        elif path.cp1.Level == path.cp2.Level:
             res = True
-        else if path.cp1.Type == "Elevator" and path.cp2.Type == "Elevator" and abs(path.cp1.Level - path.cp2.Level) == 1:
+        elif path.cp1.Type == "Elevator" and path.cp2.Type == "Elevator" and abs(path.cp1.Level - path.cp2.Level) == 1:
             res = True
-        else if path.cp1.Type == "Stair" and path.cp2.Type == "Stair" and abs(path.cp1.Level - path.cp2.Level) == 1:
+        elif path.cp1.Type == "Stair" and path.cp2.Type == "Stair" and abs(path.cp1.Level - path.cp2.Level) == 1:
             res = True
         else:
             res = False
@@ -173,11 +173,11 @@ def getHeuristics(Paths):
         if path.legal:
             if path.Type == "Corridor":
                 path.heuristic = 2 - Preferences.indoor * 0.5
-            else if path.Type == "Out":
+            elif path.Type == "Out":
                 path.heuristic = Preferences.indoor * 0.5
-            else if path.Type == "Stair":
+            elif path.Type == "Stair":
                 path.heuristic = 1 - Preferences.stair * 0.5
-            else if path.Type == "Elevator":
+            elif path.Type == "Elevator":
                 path.heuristic = Preferences.stair * 0.5 + 0.5
         else:
             path.heuristic = 1000

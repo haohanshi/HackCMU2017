@@ -14,7 +14,7 @@ def main(startPoint, endPoint):
     result = instructions.generate_instr(route)
     return result
 
-def findRoute(Paths, startPoint, endPoint)
+def findRoute(Paths, startPoint, endPoint):
     route = []
     # for key in Paths:
     #     path = Paths.key
