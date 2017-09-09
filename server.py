@@ -5,6 +5,7 @@ import cgi
 import json
 
 
+
 class Handler(BaseHTTPRequestHandler):
     
     def do_GET(self):
@@ -27,7 +28,8 @@ class Handler(BaseHTTPRequestHandler):
         building,number=room.split(" ")
         name=building+number
         type='Room'
-        level=number[0]
+        level=int(number[0])
+        number = int(number)
         if level=='A':
             level=0
         return [name,type,building,level,number]

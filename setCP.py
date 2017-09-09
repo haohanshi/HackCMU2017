@@ -2,21 +2,26 @@ import checkpoints.py
 import globalVal.py
 
 global CPList
+GlobalVal()
+
+Preferences
 
 '''
 Location Naming Standardization: Type_Building_Level_Number
 '''
 class location:
-    def __init__(self,name,type,building,level,number):
-        self.type=type
+    def __init__(self,name,cat,building,level,number):
+        self.cat=cat
         self.building=building
         self.level=level
         self.number=number
         self.name = name
 
+    def Name(self):
+        return self.name
 
     def Type(self):
-        return self.type
+        return self.cat
 
     def Building(self):
         return self.building
@@ -55,14 +60,14 @@ class stations:
 
 
 class path:
-    def __init__(self, cp1, cp2, type, eta = 0):
+    def __init__(self, cp1, cp2, cat, eta = 0):
         self.cp1 = cp1
         self.cp2 = cp2
         self.heuristic=0
         self.legal=1
         self.stations=None
         self.eta = eta
-        self.type = type
+        self.cat = cat
 
     def Heuristic(self):
         return self.heuristic
@@ -80,7 +85,7 @@ class path:
         return self.cp2
 
     def Type(self):
-        return self.type
+        return self.cat
 
     def ETA(self):
         return self.eta
@@ -167,9 +172,9 @@ def getHeuristics(Paths):
         path = Paths[key]
         if path.legal:
             if path.Type == "Corridor":
-                path.heuristic = 2 - Preferences.Indoor * 0.5
+                path.heuristic = 2 - Preferences.indoor * 0.5
             else if path.Type == "Out":
-                path.heuristic = Preferences.Indoor * 0.5
+                path.heuristic = Preferences.indoor * 0.5
             else if path.Type == "Stair":
                 path.heuristic = 1 - Preferences.stair * 0.5
             else if path.Type == "Elevator":
