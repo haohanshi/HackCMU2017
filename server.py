@@ -61,8 +61,10 @@ class Handler(BaseHTTPRequestHandler):
         startpoint=self.parser(start_room)
         endpoint=self.parser(end_room)
 
-        dict_t = main(startpoint, endpoint)
-        
+        #dict_t = main(startpoint, endpoint)
+        dict_t = {'description':[\
+            'Walk down the Corridor.You will see DH_2F_WestStair.',\
+            'Climb up the stairs. You will see DH2210.'],'points':['DH_2350_Corridor','DH_2F_WestStair']}
         result = json.dumps(dict_t)
         self.wfile.write(dict_t)
         return

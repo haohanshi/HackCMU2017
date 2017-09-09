@@ -25,10 +25,10 @@ def path_to_instr(path):
     return instr
 
 def generate_instr(pathlist):
-    all_instr={}
+    all_instr={'description':[]}
     for path in pathlist:
         instr=path_to_instr(path)
-        all_instr[path.Name]=instr
+        all_instr['description'].append=instr
 
     return all_instr
         
