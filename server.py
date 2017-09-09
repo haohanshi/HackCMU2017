@@ -25,13 +25,22 @@ class Handler(BaseHTTPRequestHandler):
         return
 
     def parser(self,room):
-        building,number=room.split("+")
-        name=building+number
-        type='Room'
-        level=int(number[0])
-        number = int(number)
-        if level=='A':
-            level=0
+        if room == "Randy+Pausch+Bridge":
+            building = "RPB"
+            number = 5000
+            type = 'Road'
+            level = 5
+            name = "Randy Pausch Bridge"
+        else:
+            building,number=room.split("+")
+            name=building+number
+            type='Room'
+            level=number[0]
+            if level=='A':
+                level=0
+            else:
+                level = int(level)
+            number = int(number)
         return [name,type,building,level,number]
 
 
