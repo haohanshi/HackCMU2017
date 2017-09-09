@@ -67,34 +67,34 @@ ul.animate {
 }
 
 div.skew {
-	max-width: 625px;
+	max-width: 825px;
 	margin: 0 auto;
 
 	display: block;
 	overflow: hidden;
 
-	-webkit-transform: skewX(16deg);
+/*	-webkit-transform: skewX(16deg);
        -moz-transform: skewX(16deg);
         -ms-transform: skewX(16deg);
-            transform: skewX(16deg);
+            transform: skewX(16deg);*/
 }
 
 div.skew > div.wrap {
 	display: block;
 	overflow: hidden;
 
-	-webkit-transform: skewX(-16deg);
+/*	-webkit-transform: skewX(-16deg);
 	   -moz-transform: skewX(-16deg);
 	    -ms-transform: skewX(-16deg);
 	        transform: skewX(-16deg);
 
 	margin-left: -10.1%;
-	width: 122%;
+	width: 122%;*/
 }
 
 img {
-
-	width: 50%;
+	max-width: 1000px;
+	width: 90%;
 	height: auto;
 	display: block;
 	margin: 0 auto;

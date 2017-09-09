@@ -64,7 +64,7 @@ class Handler(BaseHTTPRequestHandler):
         #dict_t = main(startpoint, endpoint)
         dict_t = {'description':[
             'Walk down the Corridor.You will see DH_2F_WestStair.',
-            'Climb up the stairs. You will see DH2210.', '3', '4', '5', '6', '7', '8', '9', '10'],'points':['DH_2350_Corridor','DH_2F_WestStair', '3']}
+            'Climb up the stairs. You will see DH2210.','3','4','5'],'points':['DH_2350_Corridor','DH_2F_WestStair', '3']}
         result = json.dumps(dict_t)
         self.wfile.write(result)
         return
